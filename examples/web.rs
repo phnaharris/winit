@@ -1,3 +1,4 @@
+//! Run with: `cargo run-wasm --example web`
 #![allow(clippy::disallowed_methods, clippy::single_match)]
 
 use winit::{
