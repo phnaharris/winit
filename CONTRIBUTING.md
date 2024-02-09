@@ -30,9 +30,6 @@ When making a code contribution to winit, before opening your pull request, plea
 
   You needn't worry about the added entry causing conflicts, the maintainer that merges the PR will
   handle those for you when merging (see below).
-- if your PR affects the platform compatibility of one or more features or adds another feature, the
-  relevant sections in [`FEATURES.md`](https://github.com/rust-windowing/winit/blob/master/FEATURES.md#features)
-  should be updated.
 
 Once your PR is open, you can ask for a review by a maintainer of your platform. Winit's merging policy
 is that a PR must be approved by at least two maintainers of winit before being merged, including
@@ -63,7 +60,7 @@ The exact steps for an exemplary `0.2.0` release might look like this:
   5. The version is pushed to crates.io
   6. A GitHub release is created for the `v0.2.0` tag
   7. On master, the version is bumped to `0.2.0`, and the CHANGELOG is updated
-  
+
 When doing a patch release, the process is similar:
   1. Initially, the version of the latest release is `0.2.0`
   2. Checkout the `v0.2.x` branch

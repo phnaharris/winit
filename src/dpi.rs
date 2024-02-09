@@ -103,6 +103,7 @@
 //! [apple_2]: https://developer.apple.com/design/human-interface-guidelines/macos/icons-and-images/image-size-and-resolution/
 //! [android_1]: https://developer.android.com/training/multiscreen/screendensities
 //! [web_1]: https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio
+#![doc(alias = "HiDPI")]
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
