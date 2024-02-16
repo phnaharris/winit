@@ -1,0 +1,61 @@
+# Unreleased
+
+- On X11, don't require XIM to run.
+- Fix compatibility with 32-bit platforms without 64-bit atomics.
+- On X11, fix swapped instance and general class names.
+- **Breaking:** Removed unnecessary generic parameter `T` from `EventLoopWindowTarget`.
+- On Windows, macOS, X11, Wayland and Web, implement setting images as cursors. See the `custom_cursors.rs` example.
+  - **Breaking:** Remove `Window::set_cursor_icon`
+  - Add `WindowBuilder::with_cursor` and `Window::set_cursor` which takes a `CursorIcon` or `CustomCursor`
+  - Add `CustomCursor`
+  - Add `CustomCursor::from_rgba` to allow creating cursor images from RGBA data.
+  - Add `CustomCursorExtWebSys::from_url` to allow loading cursor images from URLs.
+  - Add `CustomCursorExtWebSys::from_animation` to allow creating animated cursors from other `CustomCursor`s.
+- On macOS, add services menu.
+- **Breaking:** On Web, remove queuing fullscreen request in absence of transient activation.
+- On Web, fix setting cursor icon overriding cursor visibility.
+- **Breaking:** On Web, return `RawWindowHandle::WebCanvas` instead of `RawWindowHandle::Web`.
+- **Breaking:** On Web, macOS and iOS, return `HandleError::Unavailable` when a window handle is not available.
+- **Breaking:** Bump MSRV from `1.65` to `1.70`.
+- On Web, add the ability to toggle calling `Event.preventDefault()` on `Window`.
+- **Breaking:** Remove `WindowAttributes::fullscreen()` and expose as field directly.
+- **Breaking:** Rename `VideoMode` to `VideoModeHandle` to represent that it doesn't hold static data.
+- **Breaking:** No longer export `platform::x11::XNotSupported`.
+- **Breaking:** Renamed `platform::x11::XWindowType` to `platform::x11::WindowType`.
+- Add the `OwnedDisplayHandle` type for allowing safe display handle usage outside of trivial cases.
+- **Breaking:** Rename `TouchpadMagnify` to `PinchGesture`, `SmartMagnify` to `DoubleTapGesture` and `TouchpadRotate` to `RotationGesture` to represent the action rather than the intent.
+- on iOS, add detection support for `PinchGesture`, `DoubleTapGesture` and `RotationGesture`.
+- on Windows: add `with_system_backdrop`, `with_border_color`, `with_title_background_color`, `with_title_text_color` and `with_corner_preference`
+- On Windows, Remove `WS_CAPTION`, `WS_BORDER` and `WS_EX_WINDOWEDGE` styles for child windows without decorations.
+- On Windows, fixed a race condition when sending an event through the loop proxy.
+- **Breaking:** Removed `EventLoopError::AlreadyRunning`, which can't happen as it is already prevented by the type system.
+- On Wayland, disable `Occluded` event handling.
+- Added `EventLoop::builder`, which is intended to replace the (now deprecated) `EventLoopBuilder::new`.
+- **Breaking:** Changed the signature of `EventLoop::with_user_event` to return a builder.
+- **Breaking:** Removed `EventLoopBuilder::with_user_event`, the functionality is now available in `EventLoop::with_user_event`.
+- Add `Window::builder`, which is intended to replace the (now deprecated) `WindowBuilder::new`.
+- On X11, reload dpi on `_XSETTINGS_SETTINGS` update.
+- On X11, fix deadlock when adjusting DPI and resizing at the same time.
+- On Wayland, fix `Focused(false)` being send when other seats still have window focused.
+- On Wayland, fix `Window::set_{min,max}_inner_size` not always applied.
+- On Windows, fix inconsistent resizing behavior with multi-monitor setups when repositioning outside the event loop.
+- On Wayland, fix `WAYLAND_SOCKET` not used when detecting platform.
+- On Orbital, fix `logical_key` and `text` not reported in `KeyEvent`.
+- On Orbital, implement `KeyEventExtModifierSupplement`.
+- On Orbital, map keys to `NamedKey` when possible.
+- On Orbital, implement `set_cursor_grab`.
+- On Orbital, implement `set_cursor_visible`.
+- On Orbital, implement `drag_window`.
+- On Orbital, implement `drag_resize_window`.
+- On Orbital, implement `set_transparent`.
+- On Orbital, implement `set_visible`.
+- On Orbital, implement `is_visible`.
+- On Orbital, implement `set_resizable`.
+- On Orbital, implement `is_resizable`.
+- On Orbital, implement `set_maximized`.
+- On Orbital, implement `is_maximized`.
+- On Orbital, implement `set_decorations`.
+- On Orbital, implement `is_decorated`.
+- On Orbital, implement `set_window_level`.
+- On Orbital, emit `DeviceEvent::MouseMotion`.
+- On Wayland, fix title in CSD not updated from `AboutToWait`.

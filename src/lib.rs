@@ -164,6 +164,8 @@
 #[cfg(feature = "rwh_06")]
 pub use rwh_06 as raw_window_handle;
 
+#[cfg(any(doc, doctest, test))]
+pub mod __changelog;
 pub mod dpi;
 #[macro_use]
 pub mod error;

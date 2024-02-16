@@ -26,7 +26,7 @@ When making a code contribution to winit, before opening your pull request, plea
 - you updated any relevant documentation in winit
 - you left comments in your code explaining any part that is not straightforward, so that the
   maintainers and future contributors don't have to try to guess what your code is supposed to do
-- your PR adds an entry to the changelog file if the introduced change is relevant to winit users.
+- your PR adds an entry to the current changelog if the introduced change is relevant to winit users.
 
   You needn't worry about the added entry causing conflicts, the maintainer that merges the PR will
   handle those for you when merging (see below).
@@ -38,8 +38,8 @@ Once your PR is open, you can ask for a review by a maintainer of your platform.
 is that a PR must be approved by at least two maintainers of winit before being merged, including
 at least a maintainer of the platform (a maintainer making a PR themselves counts as approving it).
 
-Once your PR is deemed ready, the merging maintainer will take care of resolving conflicts in
-`CHANGELOG.md` (but you must resolve other conflicts yourself). Doing this requires that you check the
+Once your PR is deemed ready, the merging maintainer will take care of resolving conflicts in the
+`__changelog` module (but you must resolve other conflicts yourself). Doing this requires that you check the
 "give contributors write access to the branch" checkbox when creating the PR.
 
 ## Maintainers & Testers
@@ -62,8 +62,8 @@ The exact steps for an exemplary `0.2.0` release might look like this:
   4. The new commit in the branch is tagged `v0.2.0`
   5. The version is pushed to crates.io
   6. A GitHub release is created for the `v0.2.0` tag
-  7. On master, the version is bumped to `0.2.0`, and the CHANGELOG is updated
-  
+  7. On master, the version is bumped to `0.2.0`, and the changelog is updated
+
 When doing a patch release, the process is similar:
   1. Initially, the version of the latest release is `0.2.0`
   2. Checkout the `v0.2.x` branch
