@@ -1,6 +1,7 @@
-//! # Changelog
+//! # Changelog and migrations
 //!
-//! All notable changes to this project will be documented in this module.
+//! All notable changes to this project will be documented in this module,
+//! along with migration instructions for larger changes.
 
 // Put the current changelog entry at the top of rustdoc output.
 pub use unreleased as current;
