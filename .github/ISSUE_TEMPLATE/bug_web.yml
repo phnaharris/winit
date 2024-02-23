@@ -23,9 +23,23 @@ body:
       options:
         - Firefox
         - Chrome
-        - Safari
         - Microsoft Edge
+        - Safari (old than listed)
+        - Safari 13
+        - Safari 14
+        - Safari 15
+        - Safari 16
+        - Safari 17
+        - Safari (newer than listed)
       multiple: true
+    validations:
+      required: true
+  - type: textarea
+    id: device
+    attributes:
+      label: Tested devices
+      description: Which device(s) are you using?
+      placeholder: 'iPhone 15, Lenovo , MacBook Pro M2, Samsung Galaxy Z, ...'
     validations:
       required: true
   - type: textarea
