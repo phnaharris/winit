@@ -39,7 +39,7 @@ body:
     attributes:
       label: Tested devices
       description: Which device(s) are you using?
-      placeholder: 'iPhone 15, Lenovo , MacBook Pro M2, Samsung Galaxy Z, ...'
+      placeholder: 'iPhone 15, Lenovo ThinkPad X1, MacBook Pro M2, Samsung Galaxy Z, ...'
     validations:
       required: true
   - type: textarea
