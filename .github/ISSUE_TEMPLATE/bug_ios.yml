@@ -21,10 +21,9 @@ body:
       label: Device and iOS version
       description: Which devices and iOS versions are you seeing the problem on?
       placeholder: |
-        iPhone 15 running iOS 14.0
-        iPhone 15 running iOS 17.0
-        iPad Mini 6 running iOS 17.0
-        MacBook Pro M2 Mac Catalyst running macOS 14.2
+        iPhone 15 running iOS 14.0,
+        iPhone 15 running iOS 17.0,
+        MacBook Pro M2 Mac Catalyst running macOS 14.2,
         iPhone simulator running iOS 17.0
     validations:
       required: true

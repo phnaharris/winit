@@ -21,8 +21,8 @@ body:
       label: Device and Android version
       description: Which devices and Android versions are you seeing the problem on?
       placeholder: |
-        Samsung Galaxy Z running Android Pie (API level 28)
-        Samsung Galaxy Z running Android 14 (API level 34)
+        Samsung Galaxy Z running Android Pie (API level 28),
+        Samsung Galaxy Z running Android 14 (API level 34),
         Pixel 8 running Android 14 (API level 34)
     validations:
       required: true
