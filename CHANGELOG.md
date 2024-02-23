@@ -11,6 +11,10 @@ Unreleased` header.
 
 # Unreleased
 
+- Deprecate `EventLoop::run` in favor of `EventLoop::run_app`.
+- Deprecate `EventLoopExtRunOnDemand::run_on_demand` in favor of `EventLoop::run_app_on_demand`.
+- Deprecate `EventLoopExtPumpEvents::pump_events` in favor of `EventLoopExtPumpEvents::pump_app_events`.
+- Add `ApplicationHandler<T>` trait which mimics `Event<T>`.
 - On Wayland, fix DeviceEvent::Motion not being sent
 - On X11, don't require XIM to run.
 - On X11, fix xkb state not being updated correctly sometimes leading to wrong input.
