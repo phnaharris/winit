@@ -7,7 +7,7 @@ body:
     id: description
     attributes:
       label: Description
-      description: Description of the problem does this solve or what need does it fill? Please be mindful of the [scope](FEATURES.md) of Winit.
+      description: Description of the problem does this solve or what need does it fill? Please be mindful of the [scope](https://github.com/rust-windowing/winit/blob/master/FEATURES.md) of Winit.
     validations:
       required: true
   - type: dropdown
