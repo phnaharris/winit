@@ -623,9 +623,9 @@ pub(crate) fn handle_nonuser_events<I: IntoIterator<Item = EventWrapper>>(
         match wrapper {
             EventWrapper::StaticEvent(event) => {
                 if !processing_redraws && event.is_redraw() {
-                    log::info!("processing `RedrawRequested` during the main event loop");
+                    tracing::info!("processing `RedrawRequested` during the main event loop");
                 } else if processing_redraws && !event.is_redraw() {
-                    log::warn!(
+                    tracing::warn!(
                         "processing non `RedrawRequested` event after the main event loop: {:#?}",
                         event
                     );
@@ -677,9 +677,9 @@ pub(crate) fn handle_nonuser_events<I: IntoIterator<Item = EventWrapper>>(
             match wrapper {
                 EventWrapper::StaticEvent(event) => {
                     if !processing_redraws && event.is_redraw() {
-                        log::info!("processing `RedrawRequested` during the main event loop");
+                        tracing::info!("processing `RedrawRequested` during the main event loop");
                     } else if processing_redraws && !event.is_redraw() {
-                        log::warn!(
+                        tracing::warn!(
                             "processing non-`RedrawRequested` event after the main event loop: {:#?}",
                             event
                         );
@@ -912,7 +912,7 @@ macro_rules! os_capabilities {
         impl OSCapabilities {$(
             $(#[$attr])*
             pub fn $error_name(&self, extra_msg: &str) {
-                log::warn!(
+                tracing::warn!(
                     concat!("`", $objc_call, "` requires iOS {}.{}+. This device is running iOS {}.{}.{}. {}"),
                     $major, $minor, self.os_version.majorVersion, self.os_version.minorVersion, self.os_version.patchVersion,
                     extra_msg

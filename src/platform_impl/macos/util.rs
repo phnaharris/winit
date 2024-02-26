@@ -1,5 +1,5 @@
 use icrate::Foundation::{NSNotFound, NSRange, NSUInteger};
-use log::trace;
+use tracing::trace;
 
 pub const EMPTY_RANGE: NSRange = NSRange {
     location: NSNotFound as NSUInteger,
