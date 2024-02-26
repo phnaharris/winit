@@ -41,6 +41,9 @@ use crate::platform_impl::x11::{
 /// The X11 documentation states: "Keycodes lie in the inclusive range `[8, 255]`".
 const KEYCODE_OFFSET: u8 = 8;
 
+/// Minimum delta for a device event to be considered.
+const NOTGULL_THRESHOLD: f32 = 4.0e-8;
+
 pub struct EventProcessor {
     pub dnd: Dnd,
     pub ime_receiver: ImeReceiver,
@@ -1464,7 +1467,9 @@ impl EventProcessor {
             value = unsafe { value.offset(1) };
         }
 
-        if mouse_delta != (0.0, 0.0) {
+        if mouse_delta.0.abs() as f32 >= NOTGULL_THRESHOLD
+            || mouse_delta.1.abs() as f32 >= NOTGULL_THRESHOLD
+        {
             let event = Event::DeviceEvent {
                 device_id: did,
                 event: DeviceEvent::MouseMotion { delta: mouse_delta },
@@ -1472,7 +1477,7 @@ impl EventProcessor {
             callback(&self.target, event);
         }
 
-        if scroll_delta != (0.0, 0.0) {
+        if scroll_delta.0.abs() >= NOTGULL_THRESHOLD || scroll_delta.1.abs() >= NOTGULL_THRESHOLD {
             let event = Event::DeviceEvent {
                 device_id: did,
                 event: DeviceEvent::MouseWheel {
