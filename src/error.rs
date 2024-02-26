@@ -65,7 +65,9 @@ impl OsError {
 #[allow(unused_macros)]
 macro_rules! os_error {
     ($error:expr) => {{
-        crate::error::OsError::new(line!(), file!(), $error)
+        let error = $error;
+        tracing::error!("encountered an OS error: {}", error);
+        crate::error::OsError::new(line!(), file!(), error)
     }};
 }
 
