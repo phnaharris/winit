@@ -1,11 +1,10 @@
 #![allow(clippy::unnecessary_cast)]
 
-use std::collections::VecDeque;
-
 use icrate::Foundation::{CGFloat, CGPoint, CGRect, CGSize, MainThreadBound, MainThreadMarker};
 use objc2::rc::Id;
 use objc2::runtime::AnyObject;
 use objc2::{class, msg_send};
+use std::collections::VecDeque;
 
 use super::app_state::EventWrapper;
 use super::uikit::{UIApplication, UIScreen, UIScreenOverscanCompensation};
@@ -298,6 +297,10 @@ impl Inner {
 
     pub fn set_ime_purpose(&self, _purpose: ImePurpose) {
         warn!("`Window::set_ime_allowed` is ignored on iOS")
+    }
+
+    pub fn set_ime_surrounding_text(&self, _text: String, _selection: (usize, usize)) {
+        warn!("`Window::set_ime_surrounding_text` is ignored on iOS")
     }
 
     pub fn focus_window(&self) {

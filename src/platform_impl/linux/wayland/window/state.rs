@@ -27,6 +27,7 @@ use sctk::shell::xdg::XdgSurface;
 use sctk::shell::WaylandSurface;
 use sctk::shm::Shm;
 use sctk::subcompositor::SubcompositorState;
+use wayland_protocols::wp::text_input::zv3::client::zwp_text_input_v3::ChangeCause;
 use wayland_protocols_plasma::blur::client::org_kde_kwin_blur::OrgKdeKwinBlur;
 
 use crate::dpi::{LogicalPosition, LogicalSize, PhysicalSize, Size};
@@ -938,6 +939,18 @@ impl WindowState {
 
         for text_input in &self.text_inputs {
             text_input.set_content_type_by_purpose(purpose);
+            text_input.commit();
+        }
+    }
+
+    pub fn set_surrounding_text(&mut self, text: String, cursor: i32, anchor: i32) {
+        for text_input in &self.text_inputs {
+            // println!(
+            //     "wayland setting surrounding text {} {} {}",
+            //     text, cursor, anchor
+            // );
+            text_input.set_surrounding_text(text.clone(), cursor, cursor);
+            text_input.set_text_change_cause(ChangeCause::InputMethod);
             text_input.commit();
         }
     }

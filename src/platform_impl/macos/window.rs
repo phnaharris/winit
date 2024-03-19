@@ -1308,6 +1308,9 @@ impl WinitWindow {
     pub fn set_ime_purpose(&self, _purpose: ImePurpose) {}
 
     #[inline]
+    pub fn set_ime_surrounding_text(&self, text: String, selection: (usize, usize)) {}
+
+    #[inline]
     pub fn focus_window(&self) {
         let is_minimized = self.isMiniaturized();
         let is_visible = self.isVisible();

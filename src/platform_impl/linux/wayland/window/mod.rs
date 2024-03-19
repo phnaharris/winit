@@ -632,6 +632,15 @@ impl Window {
     }
 
     #[inline]
+    pub fn set_ime_surrounding_text(&self, _text: String, _selection: (usize, usize)) {
+        self.window_state.lock().unwrap().set_surrounding_text(
+            _text,
+            _selection.0 as i32,
+            _selection.1 as i32,
+        )
+    }
+
+    #[inline]
     pub fn focus_window(&self) {}
 
     #[inline]

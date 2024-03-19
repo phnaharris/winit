@@ -1,6 +1,4 @@
 //! The [`Window`] struct and associated types.
-use std::fmt;
-
 use crate::{
     dpi::{PhysicalPosition, PhysicalSize, Position, Size},
     error::{ExternalError, NotSupportedError, OsError},
@@ -8,6 +6,7 @@ use crate::{
     monitor::{MonitorHandle, VideoMode},
     platform_impl, SendSyncWrapper,
 };
+use std::fmt;
 
 pub use crate::icon::{BadIcon, Icon};
 
@@ -1239,6 +1238,15 @@ impl Window {
             .maybe_queue_on_main(move |w| w.set_ime_purpose(purpose))
     }
 
+    /// Sets the surrounding text for IME.
+    ///
+    /// ## Platform-specific
+    /// - **Android**: should be set when a textfield is focused, so the keyboard has context
+    /// for autocomplete. If this is not set, the text will be cleared when the user starts typing.
+    /// - **iOS / Web / Windows / X11 / macOS / Orbital:** Unsupported.
+    pub fn set_ime_surrounding_text(&self, text: String, selection: (usize, usize)) {
+        self.window.set_ime_surrounding_text(text, selection);
+    }
     /// Brings the window to the front and sets input focus. Has no effect if the window is
     /// already in focus, minimized, or not visible.
     ///
